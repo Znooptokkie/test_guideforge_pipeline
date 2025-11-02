@@ -1,5 +1,3 @@
-// TEST COMMENT ---- MOET WEG!!!
-
 package com.guideforge.backend;
 
 import com.guideforge.backend.book.BookJsonDataLoader;
