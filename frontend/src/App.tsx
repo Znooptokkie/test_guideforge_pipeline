@@ -43,7 +43,7 @@ function App() {
       })
       .catch((error) => {
         console.error("API error:", error);
-        setError("Kon books niet ophalen. Probeer het later opnieuw.");
+        setError(`ERROR: Kon books niet ophalen: ${error}`);
         setLoading(false);
       });
   }, []);

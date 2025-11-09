@@ -19,19 +19,16 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books") // Default sub-URL
-public class BookController 
-{
+public class BookController {
     private final BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository)
-    {
+    public BookController(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
     /* Zonder Wrapper */
     @GetMapping("/all")
-    List<Book> findAll()
-    {
+    List<Book> findAll() {
         return bookRepository.findAll();
     }
 
@@ -39,17 +36,14 @@ public class BookController
     // @GetMapping("/all")
     // Books findAll()
     // {
-        // return new Books(bookRepository.findAll());
+    // return new Books(bookRepository.findAll());
     // }
 
-
     @GetMapping("/{id}")
-    Book findById(@PathVariable Integer id)
-    {
+    Book findById(@PathVariable Integer id) {
         Optional<Book> book = bookRepository.findById(id);
 
-        if (book.isEmpty())
-        {
+        if (book.isEmpty()) {
             // Komt een 404 i.p.v. 500
             throw new BookNotFoundException();
         }
@@ -59,22 +53,19 @@ public class BookController
 
     @ResponseStatus(HttpStatus.CREATED) // Geeft de 201 code als succes
     @PostMapping("/all")
-    void create(@Valid @RequestBody Book book)
-    {
+    void create(@Valid @RequestBody Book book) {
         bookRepository.create(book);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT) // Geeft 204 terug 
+    @ResponseStatus(HttpStatus.NO_CONTENT) // Geeft 204 terug
     @PutMapping("/{id}")
-    void update(@Valid @RequestBody Book book, @PathVariable Integer id)
-    {
+    void update(@Valid @RequestBody Book book, @PathVariable Integer id) {
         bookRepository.update(book, id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    void delete(@PathVariable Integer id)
-    {
+    void delete(@PathVariable Integer id) {
         bookRepository.delete(id);
     }
 }

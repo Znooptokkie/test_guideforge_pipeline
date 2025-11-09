@@ -20,5 +20,5 @@ import java.util.List;
 //   { "id": 2, "title": "Book 2", ... }
 // ]
 
-
-public record Books(List<Book> books) {}
+public record Books(List<Book> books) {
+}
