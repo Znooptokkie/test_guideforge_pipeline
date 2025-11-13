@@ -20,12 +20,10 @@ public class Application {
     }
 
     // Roep de run() method aan om de JSON te verwerken
-    // @Bean
-    // CommandLineRunner runner(BookJsonDataLoader bookJson)
-    // {
-    // return args ->
-    // {
-    // bookJson.run(args);
-    // };
-    // }
+    @Bean
+    CommandLineRunner runner(BookJsonDataLoader bookJson) {
+        return args -> {
+            bookJson.run(args);
+        };
+    }
 }
